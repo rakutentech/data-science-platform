@@ -1,0 +1,1067 @@
+{
+  "info": {
+    "title": "API Documentation",
+    "version": "1.0.0",
+    "description": "Datalab User API"
+  },
+  "components": {
+    "schemas": {
+      "user_delete": {
+        "properties": {
+          "ID": {
+            "type": "integer"
+          }
+        }
+      },
+      "lab_instance": {
+        "properties": {
+          "TypeName": {
+            "type": "string"
+          },
+          "TypeGroup": {
+            "type": "string"
+          },
+          "Name": {
+            "type": "string"
+          },
+          "InstanceTypeName": {
+            "type": "string"
+          },
+          "InstanceNumber": {
+            "type": "integer"
+          },
+          "EphemeralStorage": {
+            "type": "integer"
+          },
+          "StorageScale": {
+            "type": "string"
+          },
+          "Owner": {
+            "type": "string"
+          },
+          "CreateAt": {
+            "type": "integer"
+          },
+          "Namespace": {
+            "type": "string"
+          },
+          "LoadBalancer": {
+            "type": "integer"
+          },
+          "TagsJSON": {
+            "type": "string"
+          }
+        }
+      },
+      "function_instance": {
+        "properties": {
+          "FunctionName": {
+            "type": "string"
+          },
+          "Name": {
+            "type": "string"
+          },
+          "InstanceTypeName": {
+            "type": "string"
+          },
+          "EphemeralStorage": {
+            "type": "integer"
+          },
+          "StorageScale": {
+            "type": "string"
+          },
+          "InstanceNumber": {
+            "type": "integer"
+          },
+          "Owner": {
+            "type": "string"
+          },
+          "CreateAt": {
+            "type": "integer"
+          },
+          "Namespace": {
+            "type": "string"
+          },
+          "IngressPath": {
+            "type": "string"
+          },
+          "Trigger": {
+            "type": "string"
+          },
+          "FunctionContextType": {
+            "type": "string"
+          },
+          "FunctionRef": {
+            "type": "string"
+          },
+          "LoadBalancer": {
+            "type": "string"
+          },
+          "TagsJSON": {
+            "type": "string"
+          }
+        }
+      },
+      "function_instance_put": {
+        "properties": {
+          "ID": {
+            "type": "integer"
+          },
+          "FunctionName": {
+            "type": "string"
+          },
+          "Name": {
+            "type": "string"
+          },
+          "InstanceTypeName": {
+            "type": "string"
+          },
+          "EphemeralStorage": {
+            "type": "integer"
+          },
+          "StorageScale": {
+            "type": "string"
+          },
+          "InstanceNumber": {
+            "type": "integer"
+          },
+          "Owner": {
+            "type": "string"
+          },
+          "CreateAt": {
+            "type": "integer"
+          },
+          "Namespace": {
+            "type": "string"
+          },
+          "IngressPath": {
+            "type": "string"
+          },
+          "Trigger": {
+            "type": "string"
+          },
+          "FunctionContextType": {
+            "type": "string"
+          },
+          "LoadBalancer": {
+            "type": "string"
+          },
+          "TagsJSON": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "swagger": "2.0",
+  "paths": {
+    "/api/v1/datalab": {
+      "get": {
+        "description": "Get datalab",
+        "tags": [
+          "user"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "description": "User JWT Token (Start with \\\"Bearer \\\")",
+            "in": "header",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "[{\"ID\": 1,\"Name\": \"TestLabInstance\",\"Description\": \"description of instance\",\"Group\": \"dsd\"}]"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/v1/datalab/instances": {
+      "get": {
+        "description": "Get datalab instances",
+        "tags": [
+          "user"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "description": "User JWT Token (Start with \\\"Bearer \\\")",
+            "in": "header",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "[{\"ID\":1,\"Name\":\"sample\",\"StorageScale\":\"GiB\",\"InstanceNumber\":1,\"Owner\":\"testuser\",\"CreateAt\":1234567,\"Namespace\":\"dsd\",\"IngressPath\":\"http://ingress.path\",\"LoadBalancer\":\"http://load.balancer\"}]"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "post": {
+        "description": "Create datalab instances",
+        "tags": [
+          "user"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "description": "User JWT Token (Start with \\\"Bearer \\\")",
+            "in": "header",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "Instances",
+            "description": "Instance information in JSON",
+            "in": "body",
+            "required": true,
+            "type": null,
+            "schema": {
+              "$ref": "#components/schemas/lab_instance"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "{\"status\": \"ok\"}"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "{\"message\":\"Access denied\",\"status\":\"failed\"}"
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete a datalab instances",
+        "tags": [
+          "user"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "description": "User JWT Token (Start with \\\"Bearer \\\")",
+            "in": "header",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "Instances",
+            "description": "Instance information in JSON",
+            "in": "body",
+            "required": true,
+            "type": null,
+            "schema": {
+              "$ref": "#components/schemas/user_delete"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "{\"status\": \"ok\"}"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/v1/datalab/instances/{typeGroup}/{typeName}/{instanceName}": {
+      "get": {
+        "description": "Get detail of the datalab instances",
+        "tags": [
+          "user"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "typeGroup",
+            "in": "path",
+            "description": "Type Group",
+            "required": true
+          },
+          {
+            "name": "typeName",
+            "in": "path",
+            "description": "Type Name",
+            "required": true
+          },
+          {
+            "name": "instanceName",
+            "in": "path",
+            "description": "Instance Name",
+            "required": true
+          },
+          {
+            "name": "Authorization",
+            "description": "User JWT Token (Start with \\\"Bearer \\\")",
+            "in": "header",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "{\"ID\":1,\"Name\":\"sample\",\"StorageScale\":\"GiB\",\"InstanceNumber\":1,\"Owner\":\"testuser\",\"CreateAt\":1234567,\"Namespace\":\"dsd\",\"IngressPath\":\"http://ingress.path\",\"LoadBalancer\":\"http://load.balancer\"}"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/v1/datalab/instances/{typeGroup}/{typeName}/{instanceName}/log": {
+      "get": {
+        "description": "Get datalab instances log",
+        "tags": [
+          "user"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "typeGroup",
+            "in": "path",
+            "description": "Type Group",
+            "required": true
+          },
+          {
+            "name": "typeName",
+            "in": "path",
+            "description": "Type Name",
+            "required": true
+          },
+          {
+            "name": "instanceName",
+            "in": "path",
+            "description": "Instance Name",
+            "required": true
+          },
+          {
+            "name": "Authorization",
+            "description": "User JWT Token (Start with \\\"Bearer \\\")",
+            "in": "header",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "PodName:functionin-uid-testnew-xxxxxxxxxxxx-nkqql\n---xxxxxxxxxxx....%"
+          },
+          "400": {
+            "description": "Cannot get instance"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/v1/function": {
+      "get": {
+        "description": "Get functions",
+        "tags": [
+          "user"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "description": "User JWT Token (Start with \\\"Bearer \\\")",
+            "in": "header",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "[{\"ID\": 1,\"Name\": \"testfunc\",\"Description\": \"example des\",\"ProgramLanguage\": \"python\",\"Trigger\": \"http\",\"LoadBalancer\": \"http://test.loadbalancer\",\"DefaultFunction\": \"eyJjb250ZXh0VHlwZSI6ImlubGluZSIsImZ1bmN0aW9uQ29udGV4dCI6eyJjb250ZXh0IjoiWkdWbUlHaGhibVJzWlhJb2NtVnhkV1Z6ZEN3Z2NtVnpjRzl1YzJVcE9nb2dJQ0FnY21WemRXeDBJRDBnSW5OamFXVnVZMlVpQ2lBZ0lDQnlaWE53YjI1elpTNXpaWFJmWkdGMFlTZ2lTR1ZzYkc4Z1JtRmhVeUVzSUhSb2FYTWdhWE1nWVNCN2ZTQnlaWEYxWlhOMExpQlNaWE4xYkhRNklIdDlJaTVtYjNKdFlYUW9jbVZ4ZFdWemRDNXRaWFJvYjJRc0lISmxjM1ZzZENrcCIsInJlcXVpcmVtZW50IjoiY21WeGRXVnpkSE05UFRJdU1Ua3VNUW89IiwiZW50cnlwb2ludCI6IiIsImJyYW5jaCI6IiIsImJlZm9yZUV4ZWN1dGlvbiI6IiIsImNvbW1hbmQiOiIiLCJhcmdzIjpudWxsLCJlbnYiOm51bGx9fQ==\",\"DefaultRequirement\": \"request\"}]"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/v1/function/instances": {
+      "get": {
+        "description": "Get function instances",
+        "tags": [
+          "user"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "description": "User JWT Token (Start with \\\"Bearer \\\")",
+            "in": "header",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "[{\"ID\": 30,\"UUID\": \"functionin-uid-testnew-xxxxx-033\",\"FunctionName\": \"py2-flask-normal\",\"Name\": \"testnew\",\"InstanceTypeName\": \"s1.small\",\"EphemeralStorage\": 0,\"StorageScale\": \"\",\"InstanceNumber\": 1,\"Owner\": \"uid\",\"CreateAt\":1558685503,\"Namespace\": \"datalab-dsd\",\"IngressPath\": \"testnew\",\"Trigger\": \"http\",\"FunctionContextType\": \"inline\",\"FunctionContext\": {\"Code\": \"print(\"hello\")\",\"Requirement\":\"requests==2.19.1\"},\"Tags\": {},\"URL\": \"http://FUNCTION_URL/testnew/\",\"Restarts\": 0,\"InternalEndpoints\": [\"functionin-uid-testnew-1558685503-033:5000\"],\"RunningInstances\": 1,\"PendingInstances\": 0}]"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "post": {
+        "description": "Add new function instances",
+        "tags": [
+          "user"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "description": "User JWT Token (Start with \\\"Bearer \\\")",
+            "in": "header",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "FunctionInstanceBody",
+            "description": "Function Instance Body in JSON",
+            "in": "body",
+            "type": null,
+            "required": true,
+            "schema": {
+              "$ref": "#components/schemas/function_instance"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "{\"status\": \"ok\"}"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "put": {
+        "description": "Modify function instances",
+        "tags": [
+          "user"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "description": "User JWT Token (Start with \\\"Bearer \\\")",
+            "in": "header",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "FunctionInstanceBody",
+            "description": "Function Instance Body in JSON",
+            "in": "body",
+            "type": null,
+            "required": true,
+            "schema": {
+              "$ref": "#components/schemas/function_instance_put"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "{\"status\": \"ok\"}"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "delete": {
+        "description": "Get function instances",
+        "tags": [
+          "user"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "description": "User JWT Token (Start with \\\"Bearer \\\")",
+            "in": "header",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "FunctionInstanceBody",
+            "description": "Function Instance Body in JSON",
+            "in": "body",
+            "type": null,
+            "required": true,
+            "schema": {
+              "$ref": "#components/schemas/user_delete"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "{\"status\": \"ok\"}"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/v1/function/instances/{trigger}/{instanceName}": {
+      "get": {
+        "description": "Get function instances detail",
+        "tags": [
+          "user"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "trigger",
+            "in": "path",
+            "description": "function trigger type",
+            "required": true
+          },
+          {
+            "name": "instanceName",
+            "in": "path",
+            "description": "function instanceName",
+            "required": true
+          },
+          {
+            "name": "Authorization",
+            "description": "User JWT Token (Start with \\\"Bearer \\\")",
+            "in": "header",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "{\"ID\": 30,\"UUID\": \"functionin-uid-testnew-1558685503-033\",\"FunctionName\": \"py2-flask-normal\",\"Name\": \"testnew\",\"InstanceTypeName\": \"s1.small\",\"EphemeralStorage\": 0,\"StorageScale\": \"\",\"InstanceNumber\": 1,\"Owner\": \"uid\",\"CreateAt\":1558685503,\"Namespace\": \"datalab-dsd\",\"IngressPath\": \"testnew\",\"Trigger\": \"http\",\"FunctionContextType\": \"inline\",\"FunctionContext\": {\"Code\": \"print(\"hello\")\",\"Requirement\":\"requests==2.19.1\"},\"Tags\": {},\"URL\": \"http://FUNCTION_URL/function_name/\",\"Restarts\": 0,\"InternalEndpoints\": [\"functionin-uid-testnew-1558685503-033:5000\"],\"RunningInstances\": 1,\"PendingInstances\": 0}"
+          },
+          "400": {
+            "description": "{\"message\":\"Cannot get instance\",\"status\":\"failed\"}"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/v1/function/instances/{trigger}/{instanceName}/log": {
+      "get": {
+        "description": "Get function instances",
+        "tags": [
+          "user"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "trigger",
+            "in": "path",
+            "description": "function trigger type",
+            "required": true
+          },
+          {
+            "name": "instanceName",
+            "in": "path",
+            "description": "function instanceName",
+            "required": true
+          },
+          {
+            "name": "Authorization",
+            "description": "User JWT Token (Start with \\\"Bearer \\\")",
+            "in": "header",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "{\"ID\": \"0\", \"Name\": \"sample instance\", ....}"
+          },
+          "400": {
+            "description": "{\"message\":\"Cannot get instance\",\"status\":\"failed\"}"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/v1/function/instances/{trigger}/{instanceName}/restart": {
+      "post": {
+        "description": "Restart the function instances' job",
+        "tags": [
+          "user"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "trigger",
+            "in": "path",
+            "description": "function trigger type",
+            "required": true
+          },
+          {
+            "name": "instanceName",
+            "in": "path",
+            "description": "function instanceName",
+            "required": true
+          },
+          {
+            "name": "Authorization",
+            "description": "User JWT Token (Start with \\\"Bearer \\\")",
+            "in": "header",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "PodName:functionin-uid-testnew-1558685503-033-65c7bc9955-nkqql\n---\neyJjb250ZXh0VHlwZSI6ImlubGluZSIs....%"
+          },
+          "400": {
+            "description": "{\"message\":\"Cannot get instance\",\"status\":\"failed\"}"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/v1/function/instances/{trigger}/{instanceName}/jobs": {
+      "get": {
+        "description": "Get function instances",
+        "tags": [
+          "user"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "trigger",
+            "in": "path",
+            "description": "function trigger type",
+            "required": true
+          },
+          {
+            "name": "instanceName",
+            "in": "path",
+            "description": "function instanceName",
+            "required": true
+          },
+          {
+            "name": "Authorization",
+            "description": "User JWT Token (Start with \\\"Bearer \\\")",
+            "in": "header",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "[{\"ID\":123,\"JobID\":\"fakejobid\",\"InstanceName\":\"funcname\",\"UUID\":\"uniqueid\",\"InstanceTypeName\":\"datascience\",\"Namespace\":\"datalab-dsd\",\"Owner\":\"INDEX\",\"InstanceNumber\":1,\"CreateAt\":1234567,\"FinishAt\":1234576,\"Duration\":32,\"Status\":\"Success\",\"Parameters\":\"\"}]"
+          },
+          "400": {
+            "description": "{\"message\":\"Cannot get instance\",\"status\":\"failed\"}"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/v1/function/instances/{trigger}/{instanceName}/jobs/{jobID}": {
+      "get": {
+        "description": "Get job from one function",
+        "tags": [
+          "user"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "trigger",
+            "in": "path",
+            "description": "function trigger type",
+            "required": true
+          },
+          {
+            "name": "instanceName",
+            "in": "path",
+            "description": "function instanceName",
+            "required": true
+          },
+          {
+            "name": "jobID",
+            "in": "path",
+            "description": "jobID",
+            "required": true
+          },
+          {
+            "name": "Authorization",
+            "description": "User JWT Token (Start with \\\"Bearer \\\")",
+            "in": "header",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "{\"ID\":123,\"JobID\":\"fakejobid\",\"InstanceName\":\"funcname\",\"UUID\":\"uniqueid\",\"InstanceTypeName\":\"datascience\",\"Namespace\":\"datalab-dsd\",\"Owner\":\"INDEX\",\"InstanceNumber\":1,\"CreateAt\":1234567,\"FinishAt\":1234576,\"Duration\":32,\"Status\":\"Success\",\"Parameters\":\"\"}"
+          },
+          "400": {
+            "description": "{\"message\":\"Cannot get instance\",\"status\":\"failed\"}"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/v1/function/instances/{trigger}/{instanceName}/jobs/{jobID}/log": {
+      "get": {
+        "description": "Get function instances' log",
+        "tags": [
+          "user"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "trigger",
+            "in": "path",
+            "description": "function trigger type",
+            "required": true
+          },
+          {
+            "name": "instanceName",
+            "in": "path",
+            "description": "function instanceName",
+            "required": true
+          },
+          {
+            "name": "jobID",
+            "in": "path",
+            "description": "jobID",
+            "required": true
+          },
+          {
+            "name": "Authorization",
+            "description": "User JWT Token (Start with \\\"Bearer \\\")",
+            "in": "header",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "PodName:functionin-uid-testnew-1558685503-033-65c7bc9955-nkqql\n---\neyJjb250ZXh0VHlwZSI6ImlubGluZSIs....%"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/v1/function/instances/{trigger}/{instanceName}/jobs/{jobID}/kill": {
+      "delete": {
+        "description": "kill function jobs",
+        "tags": [
+          "user"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "description": "User JWT Token (Start with \\\"Bearer \\\")",
+            "in": "header",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "trigger",
+            "in": "path",
+            "description": "function trigger type",
+            "required": true
+          },
+          {
+            "name": "instanceName",
+            "in": "path",
+            "description": "function instanceName",
+            "required": true
+          },
+          {
+            "name": "jobID",
+            "in": "path",
+            "description": "jobID",
+            "required": true
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "{\"status\": \"ok\"}"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/v1/auth": {
+      "post": {
+        "description": "Login to the application",
+        "tags": [
+          "user"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "description": "Username to use for login.",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "description": "User's password.",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "{\"token\": \"JWT_TOKEN_STRING\"}"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/api/v1/profile": {
+      "get": {
+        "description": "get profile of the user",
+        "tags": [
+          "user"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "description": "User JWT Token (Start with \\\"Bearer \\\")",
+            "in": "header",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "{\"ID\": 1, \"Username\": \"testuser\",\"AuthType\": \"1\",\"Password\": \"\",\"Group\": \"dsd\",\"Namespace\": \"datalab-dsd\",\"UserToken\": \"1234567\"}"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/v1/instancetypes": {
+      "get": {
+        "description": "get instancetypes of the user",
+        "tags": [
+          "user"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "{\"ID\":0,\"Name\":\"\",\"Description\":\"\",\"Group\":\"\",\"CPU\":0.0,\"GPU\":0.0,\"Memory\":0,\"MemoryScale\":\"\"}"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/v1/storages": {
+      "get": {
+        "description": "get storages of the user",
+        "tags": [
+          "user"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "description": "User JWT Token (Start with \\\"Bearer \\\")",
+            "in": "header",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "{\"CPUUsage\": 0,\"CPUTotal\": 0,\"GPUUsage\": 0,\"GPUTotal\": 0,\"MemoryUsage\": 0,\"MemoryTotal\": 0}"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/v1/resourcequota": {
+      "get": {
+        "description": "get resourcequota of the user",
+        "tags": [
+          "user"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "description": "User JWT Token (Start with \\\"Bearer \\\")",
+            "in": "header",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "{\"CPUTotal\":0.0,\"GPUTotal\":0.0,\"MemoryTotal\":0}"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/v1/apis/{username}/{instanceName}": {
+      "post": {
+        "description": "Trigger one function job",
+        "tags": [
+          "user"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "description": "User Name",
+            "required": true
+          },
+          {
+            "name": "instanceName",
+            "in": "path",
+            "description": "the instanceName",
+            "required": true
+          },
+          {
+            "name": "InstanceBody",
+            "description": "Instance Body in JSON",
+            "in": "body",
+            "type": "string",
+            "example": "'DATA'",
+            "required": true
+          },
+          {
+            "name": "Authorization",
+            "description": "User JWT Token (Start with \\\"Bearer \\\")",
+            "in": "header",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "{\"job_id\":\"job-uid-test-py2-039999000\",\"status\":\"ok\",\"url\":\"/functions/jobs/job-uid-test-py2-039999000\"}"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {},
+  "responses": {},
+  "parameters": {},
+  "securityDefinitions": {},
+  "tags": []
+}

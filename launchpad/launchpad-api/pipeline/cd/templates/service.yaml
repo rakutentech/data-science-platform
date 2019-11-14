@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.app.name }}{{ .Values.deploy.subfix }}
+  namespace: {{ .Values.app.namespace }}
+  labels:
+    app: {{ .Values.app.name }}{{ .Values.deploy.subfix }}
+    component: {{ .Values.app.component }}
+spec:
+  type: ClusterIP
+  ports:
+  - name: http
+    port: {{ .Values.container.port }}
+    targetPort: http
+  selector:
+    app: {{ .Values.app.name }}{{ .Values.deploy.subfix }}
+    component: {{ .Values.app.component }}

@@ -1,0 +1,17 @@
+/* ==========================================================================
+   Layout based on CSS grid
+   ========================================================================== */
+
+.grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: calc((100vw - 340px) / 16) $gap-m calc((100vw - 340px) / 16) $gap-m calc((100vw - 340px) / 16)
+    $gap-m calc((100vw - 340px) / 16) $gap-m calc((100vw - 340px) / 16) $gap-m calc((100vw - 340px) / 16) $gap-m
+    calc((100vw - 340px) / 16) $gap-m calc((100vw - 340px) / 16) $gap-m calc((100vw - 340px) / 16) $gap-m
+    calc((100vw - 340px) / 16) $gap-m calc((100vw - 340px) / 16) $gap-m calc((100vw - 340px) / 16) $gap-m
+    calc((100vw - 340px) / 16) $gap-m calc((100vw - 340px) / 16) $gap-m calc((100vw - 340px) / 16) $gap-m
+    calc((100vw - 340px) / 16);
+  grid-template-columns: repeat(16, calc((100vw - 340px) / 16));
+  grid-gap: $gap-m;
+  margin: 0 $gap-m;
+}

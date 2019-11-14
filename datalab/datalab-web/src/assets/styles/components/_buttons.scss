@@ -1,0 +1,333 @@
+button,
+*:focus {
+  outline: 0;
+}
+
+.button--large--round {
+  padding: 10px 55px;
+  height: auto;
+  width: auto;
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 20px;
+  text-transform: uppercase;
+  color: $white;
+  height: 40px;
+  border-radius: 20px;
+  background: -webkit-gradient(linear, left top, right top, from(#3380de), to(#0959ba));
+  background: -webkit-linear-gradient(left, #3380de 0%, #0959ba 100%);
+  background: -o-linear-gradient(left, #3380de 0%, #0959ba 100%);
+  background: linear-gradient(90deg, #3380de 0%, #0959ba 100%);
+}
+
+// Form submission
+.submit-button {
+  background: $green-4;
+  border: 1px solid $green-5;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 14px;
+  font-size: 15px;
+  text-align: right;
+  padding: 10px 57px;
+  color: $white;
+  text-decoration: none;
+  margin-top: 30px;
+}
+
+.discard-button,
+.discard-button:hover {
+  background: $white;
+  border: 1px solid $gray-2;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: $gray-7;
+  padding: 10px 40px;
+  margin-top: 30px;
+  margin-left: 20px;
+}
+
+// TagsInput
+.remove-tag-button,
+.remove-tag-button:hover {
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  top: 0;
+  left: 0;
+  float: left;
+  margin-right: 5px;
+  margin-top: 10px;
+}
+
+.remove-tag-button:after {
+  background-color: #000;
+  width: 10px;
+  height: 2px;
+  border-radius: 1px;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  position: absolute;
+  top: 7px;
+  left: 4px;
+  content: "";
+}
+
+.new-tag-button {
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  top: 0;
+  left: 0;
+  float: left;
+  margin-right: 5px;
+  margin-top: 10px;
+}
+
+.new-tag-button:before {
+  background-color: #000;
+  width: 2px;
+  height: 12px;
+  border-radius: 1px;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  position: absolute;
+  top: 2px;
+  left: 7px;
+  content: "";
+}
+
+.new-tag-button:after {
+  background-color: #000;
+  width: 12px;
+  height: 2px;
+  border-radius: 1px;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  position: absolute;
+  top: 7px;
+  left: 2px;
+  content: "";
+}
+
+// ToolBar
+.add-button,
+.add-button:hover {
+  float: right;
+  background: $green-4;
+  border: 1px solid $green-5;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 14px;
+  font-size: 12px;
+  text-align: right;
+  padding: 7px 15px;
+  color: $white;
+  text-decoration: none;
+}
+
+.add-gray-button,
+.add-gray-button:hover {
+  background: $gray-0;
+  border: 1px solid $gray-2;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+  text-align: center;
+  color: $gray-5;
+  padding: 7px 15px;
+  text-decoration: none;
+}
+
+.manage-button,
+.manage-button:hover {
+  float: right;
+  border: 1px solid $green-5;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 4px;
+  margin-right: 10px;
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 14px;
+  font-size: 12px;
+  text-align: right;
+  padding: 8px 15px;
+  color: $green-5;
+  text-decoration: none;
+}
+
+.refresh-button,
+.refresh-button:hover {
+  float: right;
+  background: $white;
+  border: 1px solid $gray-2;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 4px;
+  margin-right: 10px;
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 14px;
+  font-size: 12px;
+  text-align: right;
+  padding: 9px 15px;
+  color: $gray-7;
+  text-decoration: none;
+}
+
+.refresh-button-faas,
+.refresh-button-faas:hover {
+  color: $gray-7;
+  text-decoration: none;
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 17px;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+// IntanceType Modal
+.instance-button,
+.instance-button:hover {
+  background: $white;
+  border: 1px solid #dfe2e6;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+.instance-button__message,
+.instance-button__message:hover {
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 14px;
+  font-size: 12px;
+  text-align: center;
+  color: $gray-7;
+}
+
+.modal-button__normal,
+.modal-button__normal:hover {
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 14px;
+  font-size: 12px;
+  text-align: center;
+  color: $gray-7;
+  border: 1px solid $gray-7;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 4px;
+  margin-left: 10px;
+  padding: 10px;
+  width: 80px;
+}
+
+.modal-button__delete,
+.modal-button__delete:hover {
+  border: 1px solid #bf0000;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 14px;
+  font-size: 12px;
+  text-align: center;
+  color: #bf0000;
+  margin-left: 10px;
+  padding: 8px;
+  width: 200px;
+  cursor: pointer;
+}
+
+.page-item.active .page-link,
+.btn-secondary {
+  background: $white;
+  border: 1px solid #dfe2e6;
+  color: $gray-7;
+}
+
+.job-history-table table,
+.history-modal table {
+  .btn {
+    font-family: "Lato", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 11px;
+    line-height: normal;
+    text-align: center;
+    color: $white;
+    padding: 2px 10px;
+    border-radius: 8px;
+  }
+
+  .btn.unknwn {
+    background: $gray-6;
+  }
+
+  .btn.pending {
+    background: $orange-pending;
+  }
+
+  .btn.killed {
+    background: $red-4;
+  }
+
+  .btn.running {
+    background: $green-2;
+  }
+
+  .btn.success {
+    background: $blue-4;
+  }
+
+  .btn.failure,
+  .btn.failed {
+    background: $red-4;
+  }
+}
+
+.react-bs-table-pagination button#pageDropDown {
+  padding: 6.5px 15px;
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 13px;
+}

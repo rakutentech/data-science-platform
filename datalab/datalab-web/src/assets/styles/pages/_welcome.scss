@@ -1,0 +1,95 @@
+.welcome-bar {
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-size: cover;
+  height: 30vh;
+  display: block;
+  position: relative;
+}
+
+.welcome-bar__message {
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 25px;
+  font-size: 20px;
+  color: #ffffff;
+  width: 350px;
+  height: 50px;
+  text-align: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  margin: auto;
+}
+
+.welcome-description-bar {
+  height: 15vh;
+  display: block;
+  position: relative;
+  background-color: #fff;
+  display: block;
+  position: relative;
+}
+
+.welcome-description-bar__message {
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  line-height: 24px;
+  font-size: 16px;
+  color: #3b444f;
+  width: 450px;
+  height: 50px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  margin: auto;
+}
+
+.welcome-detail-bar {
+  height: 30vh;
+  display: block;
+  position: relative;
+  display: block;
+  position: relative;
+}
+
+.welcome-detail-bar__message {
+  width: 450px;
+  height: 50px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  margin: auto;
+
+  a {
+    font-family: "Lato", sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 17px;
+    font-size: 14px;
+    text-align: center;
+    color: #ffffff;
+    background: #78bc5c;
+    border: 1px solid #5a9e3e;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 4px;
+    width: 25vw;
+    padding: 10px 20px 10px 20px;
+    left: 0;
+    right: 0;
+    position: absolute;
+    margin: auto;
+  }
+
+  a:hover {
+    color: #ffffff;
+  }
+}

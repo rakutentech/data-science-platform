@@ -1,0 +1,125 @@
+spring:
+  profiles.active: local
+  application.name: launchpad-api
+  output.ansi.enabled: ALWAYS
+  main:
+    web-application-type: servlet
+    banner-mode: "off"
+  aop:
+    auto: true
+    proxy-target-class: true
+  http.encoding:
+    charset: UTF-8
+    enabled: true
+    force: true
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+    date-format: yyyy-MM-dd'T'HH:mm:ss.SSSZ
+    default-property-inclusion: non_null
+    time-zone: UTC
+
+server:
+  port: 8080
+  error.whitelabel.enabled: true
+  max-http-header-size: 16384
+  compression:
+    enabled: true
+    mime-types: text/html,text/plain,application/json
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 30000
+    max-connections: 30000
+    accept-count: 30000
+    min-spare-threads: 1000
+  error:
+    include-exception: true
+  servlet:
+    context-path: /launchpad-api
+
+management:
+  endpoints.web.exposure.include: info, threaddump, shutdown
+  endpoint:
+    shutdown:
+      enabled: true
+
+mybatis:
+  type-aliases-package: com.rakuten.tech.dscp.launchpad.entity
+  mapper-locations: com.rakuten.tech.dscp.launchpad/mapper/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    default-fetch-size: 100
+    default-statement-timeout: 30
+
+#es:
+#  index-prefix: launchpad-api-log
+
+mlflow:
+  image-name: <Docker Repo>/mlflow:1.0.0.predict
+
+---
+spring:
+  profiles: local
+  datasource:
+    url: jdbc:mysql://localhost:3306/launchpad?useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      idle-timeout: 10000
+      maximum-pool-size: 10
+      minimum-idle: 10
+      pool-name: HikariPool
+
+k8s:
+  apiVersion: v1
+  url: https://localhost:6443
+  username:
+  token:
+  ns:
+    launchpad: delivery-launchpad
+  ingress:
+    class: delivery-ingress
+    hostname: localhost
+  deployment:
+    replica: 1
+    resource:
+      limits:
+        cpu: 250m
+        memory: 250Mi
+      request:
+        cpu: 250m
+        memory: 250Mi
+
+mlflow:
+  tracking.uri: http://localhost:5000
+  minio:
+    aws_access_key_id: accesskey
+    aws_secret_access_key: secretkey
+    mlflow_s3_endpoint_url: http://localhost:9000
+    mlflow_tracking_uri: http://localhost:5000
+    bucket_name: mlflow
+
+es:
+  urls: http://localhost:9200,http://localhost:9300
+server:
+  port: 8111
+
+logging:
+  level:
+    com.rakuten.tech.dscp.launchpad.dao: debug
+
+redis:
+  cluster:
+    nodes: localhost:6379
+---
+spring:
+  profiles: dev
+
+---
+spring:
+  profiles: stg
+
+---
+spring:
+  profiles: prod

@@ -1,0 +1,8 @@
+@Library("dscp-jenkins-k8s") _
+
+deployProject (
+    serviceName: "launchpad-ui",
+    projectType: "npm",
+    buildCommand: "npm --without-ssl --insecure install && npm run build:${gitEnvironment()}",
+    testCommand: ""
+)

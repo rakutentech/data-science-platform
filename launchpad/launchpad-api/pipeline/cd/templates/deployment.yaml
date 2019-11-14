@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.app.name }}{{ .Values.deploy.subfix }}
+  namespace: {{ .Values.app.namespace }}
+  labels:
+    app: {{ .Values.app.name }}{{ .Values.deploy.subfix }}
+    component: {{ .Values.app.component }}
+spec:
+  replicas: {{ .Values.deploy.replica }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: {{ .Values.deploy.rollingupdate.maxSurge }}
+      maxUnavailable: {{ .Values.deploy.rollingupdate.maxUnavailable }}
+  selector:
+    matchLabels:
+      app: {{ .Values.app.name }}{{ .Values.deploy.subfix }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.app.name }}{{ .Values.deploy.subfix }}
+        component: {{ .Values.app.component }}
+    spec:
+      containers:
+        - name: {{ .Values.app.name }}{{ .Values.deploy.subfix }}
+          image: "{{ .Values.container.image }}:{{ .Values.container.tag }}"
+          imagePullPolicy: {{ .Values.container.pullPolicy }}
+          livenessProbe:
+            tcpSocket:
+              port: {{ .Values.container.port }}
+            initialDelaySeconds: 600
+            timeoutSeconds: 10
+            successThreshold: 1
+            failureThreshold: 5
+          env:
+            - name: PROFILE
+              value: {{ .Values.app.profile }}
+            - name: NAMESPACE
+              value: {{ .Values.app.namespace }}
+            - name: AWS_ACCESS_KEY_ID
+              value: {{ .Values.minio.access_key_id }}
+            - name: AWS_SECRET_ACCESS_KEY
+              value: {{ .Values.minio.secret_access_key }}
+            - name: BUCKET_NAME
+              value: {{ .Values.minio.bucket_name }}
+            - name: MLFLOW_S3_ENDPOINT_URL
+              value: {{ .Values.minio.endpoint_url }}
+            - name: MLFLOW_TRACKING_URI
+              value: {{ .Values.mlflow.server_uri }}
+          ports:
+          - name: http
+            containerPort: {{ .Values.container.port }}
+            protocol: TCP
+{{- if .Values.container.resources }}
+          resources:
+{{ toYaml .Values.container.resources | indent 12 }}
+{{- end }}
+{{- if .Values.deploy.affinity }}
+      affinity:
+{{ toYaml .Values.deploy.affinity | indent 8 }}
+{{- end }}

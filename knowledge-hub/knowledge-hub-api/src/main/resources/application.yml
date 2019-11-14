@@ -1,0 +1,111 @@
+spring:
+    application:
+        name: knowledge-hub-api
+    output: 
+        ansi: 
+            enabled: ALWAYS
+    main:
+        web-application-type: servlet
+        banner-mode: "off"
+    aop:
+        auto: true
+        proxy-target-class: true
+    http.encoding:
+        charset: UTF-8
+        enabled: true
+        force: true
+    jackson:
+        property-naming-strategy: LOWER_CAMEL_CASE
+        date-format: yyyy-MM-dd'T'HH:mm:ss.SSSZ
+        default-property-inclusion: NON_NULL
+    servlet:
+     multipart:
+       max-file-size: 1000MB
+       max-request-size: 1000MB
+    datasource: 
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: org.h2.Driver
+        url: jdbc:h2:mem:db;DB_CLOSE_DELAY=-1
+        username: sa
+        password: sa
+        hikari:
+            idle-timeout: 20000
+            maximum-pool-size: 10
+            minimum-idle: 2
+            pool-name: pitari-pool
+        dbcp:
+           validation-query: SELECT 1
+           test-while-idle: true
+    jpa:
+       hibernate:
+          ddl-auto: create
+    resources: 
+        static-locations: file:/knowledge_hub
+    mail:
+       default-encoding: UTF-8
+       host: 
+       username: 
+       password: 
+       port: 25
+       properties:
+          mail:
+           debug: false
+           smtp:
+             debug: false
+             auth: false
+             starttls: true
+       protocol: smtp
+       test-connection: false
+
+security:
+  permit-urls: /**/**
+  oauth2:
+    resource:
+      user-info-uri: skip
+      prefer-token-info: false 
+
+server:
+    port: 8080
+    servlet:
+       context-path: /knowledge-hub-api
+    error.whitelabel.enabled: true
+    max-http-header-size: 16384
+    compression:
+        enabled: true
+        mime-types: text/html,text/plain,application/json,multipart/form-data
+    tomcat:
+        uri-encoding: UTF-8
+        max-threads: 2000
+        basedir: logs
+        accesslog:
+            enabled: true
+            buffered: false
+            directory: .
+            pattern: combined
+            prefix: tomcat-access
+    error:
+      include-exception: true
+
+management:
+    endpoints.web.exposure.include: info, threaddump, shutdown
+    endpoints:
+        web:
+            exposure:
+                include: "*"
+            base-path: "/monitor"
+    endpoint:
+        shutdown:
+            enabled: true
+        health:
+           show-details: always
+           
+kh:
+    file_path: /knowledge_hub
+    mail_sender_name: Knowledge Hub
+    mail_sender: automailer@xxx.com
+    url: http://localhost:8080/
+    notice_setting_url: http://localhost:8080/notification
+    notebook_url: http://localhost:8080/detail?notebookId=
+    
+application: 
+    log-path: logs

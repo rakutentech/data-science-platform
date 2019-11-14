@@ -1,0 +1,11 @@
+CREATE TABLE kh_pageviews (
+             view_id int(11) NOT NULL AUTO_INCREMENT,
+             user_id varchar(50),
+             notebook_id varchar(22),
+             object_action varchar(22),
+             ip_address varchar(64),
+             create_time timestamp NOT NULL,
+             INDEX(notebook_id),
+             PRIMARY KEY (view_id)
+);
+

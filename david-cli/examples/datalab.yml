@@ -1,0 +1,16 @@
+
+- name: lab1
+  lab_group: SAMPLE-GROUP
+  lab_name: Jupyter
+  instance_type: s1.small
+  ephemeral_storage: 10
+  tags:
+    label: http-func
+
+- name: lab2
+  lab_group: SAMPLE-GROUP
+  lab_name: Jupyter
+  instance_type: s1.small
+  ephemeral_storage: 10
+  tags:
+    label: http-func

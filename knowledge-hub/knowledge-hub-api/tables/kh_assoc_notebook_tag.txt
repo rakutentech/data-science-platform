@@ -1,0 +1,6 @@
+CREATE TABLE kh_assoc_notebook_tag (
+             notebook_id varchar(22) NOT NULL,
+             tag_id varchar(100) NOT NULL,
+             record_status char(1) NOT NULL DEFAULT 5,
+             PRIMARY KEY (tag_id, notebook_id, record_status)
+);

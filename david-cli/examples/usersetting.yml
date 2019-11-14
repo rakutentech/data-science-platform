@@ -1,0 +1,17 @@
+type: users
+items:
+- name: datalab
+  spec:
+    Username: datalab
+    AuthType: Database # Database or LDAP
+    Password: datalab
+    Group: test
+    Namespace: default
+
+- name: micky
+  spec:
+    Username: micky
+    AuthType: LDAP # Database or LDAP
+    Password: 
+    Group: group2
+    Namespace: default

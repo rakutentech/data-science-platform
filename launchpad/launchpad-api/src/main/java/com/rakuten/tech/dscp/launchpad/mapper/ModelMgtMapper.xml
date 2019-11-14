@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rakuten.tech.dscp.launchpad.dao.ModelMgtMapper">
+    <resultMap id="FatRun" type="com.rakuten.tech.dscp.launchpad.entity.mlflow.FatRun">
+        <result column="run_uuid" jdbcType="BIGINT" property="runUuid"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="source_type" jdbcType="VARCHAR" property="sourceType"/>
+        <result column="source_name" jdbcType="VARCHAR" property="sourceName"/>
+        <result column="source_version" jdbcType="VARCHAR" property="sourceVersion"/>
+        <result column="entry_point_name" jdbcType="VARCHAR" property="entryPointName"/>
+        <result column="user_id" jdbcType="VARCHAR" property="userId"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+        <result column="start_time" jdbcType="BIGINT" property="startTime"/>
+        <result column="end_time" jdbcType="BIGINT" property="endTime"/>
+        <result column="lifecycle_stage" jdbcType="VARCHAR" property="lifecycleStage"/>
+        <result column="artifact_uri" jdbcType="VARCHAR" property="artifactUri"/>
+        <result column="experiment_id" jdbcType="INTEGER" property="experimentId"/>
+        <result column="param_key" jdbcType="VARCHAR" property="paramKey"/>
+        <result column="param_value" jdbcType="VARCHAR" property="paramValue"/>
+        <result column="metric_key" jdbcType="VARCHAR" property="metricKey"/>
+        <result column="metric_value" jdbcType="DOUBLE" property="metricValue"/>
+        <result column="metric_timestamp" jdbcType="BIGINT" property="metricTimestamp"/>
+        <result column="tag_key" jdbcType="VARCHAR" property="tagKey"/>
+        <result column="tag_value" jdbcType="VARCHAR" property="tagValue"/>
+        <result column="pred_access_url" jdbcType="VARCHAR" property="accessUrl"/>
+        <result column="pred_id" jdbcType="BIGINT" property="predApiId"/>
+        <result column="run_version" jdbcType="VARCHAR" property="runVersion"/>
+    </resultMap>
+
+    <select id="selectAllExperiment" parameterType="java.lang.String"
+            resultType="com.rakuten.tech.dscp.launchpad.entity.ExperimentEntity">
+        SELECT experiment_id, name, artifact_location, lifecycle_stage
+        FROM launchpad.experiments
+        <where>
+            <if test="keyword != null">
+                name LIKE concat('%',#{keyword,jdbcType=VARCHAR},'%')
+            </if>
+        </where>
+        order by name
+    </select>
+
+    <select id="selectAllRunDetail" parameterType="java.lang.Integer" resultMap="FatRun">
+        SELECT a.run_uuid, a.name, a.source_type, a.source_name, a.source_version, a.entry_point_name, a.user_id,
+           a.status, a.start_time, a.end_time, a.lifecycle_stage, a.artifact_uri, a.experiment_id,
+           p.key as param_key, p.value as param_value,
+           m.key as metric_key, m.value as metric_value, m.timestamp as metric_timestamp,
+           t.key as tag_key, t.value as tag_value,
+           pred.access_url as pred_access_url, pred.id as pred_id,
+           CONCAT('v', rv.version) as run_version
+        FROM launchpad.runs a
+        INNER JOIN launchpad.run_version rv ON a.experiment_id = rv.experiment_id AND a.run_uuid = rv.run_uuid
+        LEFT JOIN launchpad.params p ON a.run_uuid = p.run_uuid
+        LEFT JOIN launchpad.metrics m ON a.run_uuid = m.run_uuid
+        LEFT JOIN launchpad.tags t ON a.run_uuid = t.run_uuid
+        LEFT JOIN launchpad.lp_predict_api pred ON a.run_uuid = pred.run_id
+        WHERE a.experiment_id=#{experimentId} AND a.lifecycle_stage='active'
+        ORDER BY a.start_time DESC, a.run_uuid;
+    </select>
+
+    <delete id="deleteExperiment" parameterType="java.lang.Integer">
+        DELETE
+        FROM launchpad.experiments
+        WHERE experiment_id=#{experimentId}
+    </delete>
+
+    <select id="selectRunUuid" parameterType="java.lang.Integer" resultType="string">
+        SELECT run_uuid
+        FROM launchpad.runs
+        WHERE experiment_id=#{experimentId}
+    </select>
+
+    <delete id="deleteRunFromVersions" parameterType="java.lang.String">
+        DELETE
+        FROM launchpad.versions
+        WHERE run_uuid=#{runUuid}
+    </delete>
+
+    <delete id="deleteRunFromTags" parameterType="java.lang.String">
+        DELETE
+        FROM launchpad.tags
+        WHERE run_uuid=#{runUuid}
+    </delete>
+
+    <delete id="deleteRunFromParams" parameterType="java.lang.String">
+        DELETE
+        FROM launchpad.params
+        WHERE run_uuid=#{runUuid}
+    </delete>
+
+    <delete id="deleteRunFromMetrics" parameterType="java.lang.String">
+        DELETE
+        FROM launchpad.metrics
+        WHERE run_uuid=#{runUuid}
+    </delete>
+
+    <delete id="deleteRunFromRuns" parameterType="java.lang.String">
+        DELETE
+        FROM launchpad.runs
+        WHERE run_uuid=#{runUuid}
+    </delete>
+
+    <select id="selectExperiment" parameterType="integer" resultType="com.rakuten.tech.dscp.launchpad.entity.mlflow.Experiment">
+        SELECT experiment_id, name, artifact_location, lifecycle_stage
+        FROM launchpad.experiments
+        WHERE experiment_id=#{experimentId}
+    </select>
+
+    <select id="selectRun" parameterType="string" resultType="com.rakuten.tech.dscp.launchpad.entity.mlflow.Run">
+        SELECT run_uuid, name, source_type, source_name, entry_point_name, user_id, status,
+               start_time, end_time, source_version, lifecycle_stage, artifact_uri, experiment_id
+        FROM launchpad.runs
+        WHERE run_uuid=#{runUuid}
+    </select>
+
+    <insert id="setupRunVersion">
+        INSERT INTO launchpad.run_version
+        SELECT a.experiment_id, a.run_uuid, count(*)+ ifnull(a.t,0) AS version
+        FROM (
+            select a.experiment_id, a.run_uuid, a.start_time, (SELECT MAX(t.version) FROM launchpad.run_version t where t.experiment_id = a.experiment_id GROUP BY t.experiment_id) as t
+            from launchpad.runs a
+            left join launchpad.run_version b on a.experiment_id = b.experiment_id and a.run_uuid = b.run_uuid
+            where b.experiment_id is null and b.run_uuid is null
+        ) AS a
+        LEFT JOIN (
+            select a.experiment_id, a.run_uuid, a.start_time, (SELECT MAX(t.version) FROM launchpad.run_version t where t.experiment_id = a.experiment_id GROUP BY t.experiment_id) as t
+            from launchpad.runs a
+            left join launchpad.run_version b on a.experiment_id = b.experiment_id and a.run_uuid = b.run_uuid
+            where b.experiment_id is null and b.run_uuid is null
+        ) AS b
+        ON a.experiment_id = b.experiment_id AND a.start_time >= b.start_time
+        GROUP BY a.experiment_id, a.run_uuid
+    </insert>
+
+    <delete id="removeRunVersion">
+        DELETE rv FROM launchpad.run_version rv
+        WHERE NOT EXISTS (SELECT 1 FROM launchpad.experiments e WHERE rv.experiment_id = e.experiment_id)
+    </delete>
+
+</mapper>

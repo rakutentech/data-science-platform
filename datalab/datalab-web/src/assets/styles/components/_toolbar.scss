@@ -1,0 +1,60 @@
+.toolbar {
+  margin-bottom: 15px;
+
+  a {
+    margin-top: -30px;
+  }
+
+  a > img {
+    margin: 0 5px 0 0;
+  }
+
+  h2 {
+    font-family: "Lato", sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 24px;
+    font-size: 16px;
+    color: #3b444f;
+  }
+
+  .plus {
+    background-color: #78bc5c;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    width: 16px;
+    height: 16px;
+    position: relative;
+    top: 0;
+    left: 0;
+    float: left;
+    margin-right: 5px;
+  }
+
+  .plus:before {
+    background-color: #fff;
+    width: 2px;
+    height: 8px;
+    border-radius: 1px;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    position: absolute;
+    top: 4px;
+    left: 7px;
+    content: "";
+  }
+
+  .plus:after {
+    background-color: #fff;
+    width: 8px;
+    height: 2px;
+    border-radius: 1px;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    position: absolute;
+    top: 7px;
+    left: 4px;
+    content: "";
+  }
+}

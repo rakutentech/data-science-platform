@@ -1,0 +1,232 @@
+.admin-page {
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+
+  .title-7-panel {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    color: $gray-7;
+  }
+
+  .title-5-panel {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+    color: $gray-5;
+  }
+
+  .block-panel {
+    background: $white;
+    border: 1px solid $gray-2;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-shadow: 0px 2px 4px rgba(223, 226, 230, 0.4);
+    box-shadow: 0px 2px 4px rgba(223, 226, 230, 0.4);
+    border-radius: 4px;
+  }
+
+  .bars-block {
+    text-align: left;
+    display: inline-block;
+    vertical-align: top;
+    padding: 11px 25px;
+
+    h2 {
+      font-weight: bold;
+      font-size: 12px;
+      line-height: 14px;
+      color: $gray-7;
+    }
+
+    .resource-bar.progress {
+      margin-top: 7px;
+      margin-bottom: 3px;
+    }
+  }
+
+  .bars-block:nth-of-type(2) {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .group-status-block {
+    .title-5-panel,
+    .text-in-panel {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    .text-in-panel {
+      font-size: 14px;
+      line-height: 17px;
+      color: $dark;
+    }
+
+    .doughnut-block {
+      display: inline-block;
+      margin: 15px;
+
+      h2 {
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 14px;
+        text-align: center;
+        color: $gray-7;
+        margin-top: 3px;
+      }
+    }
+
+    .doughnut-block:nth-of-type(2) {
+      margin-left: 0;
+    }
+  }
+
+  .namespace-panel {
+    text-align: left;
+    margin-left: 20px;
+    display: inline-block;
+    vertical-align: top;
+
+    h2 {
+      font-weight: bold;
+      font-size: 12px;
+      line-height: 14px;
+      color: $gray-5;
+      padding: 11px 20px;
+    }
+
+    .bar-block {
+      padding: 10px 0px;
+    }
+
+    .bar-block:last-of-type {
+      padding-bottom: 20px;
+    }
+
+    .bar-block:nth-of-type(2) {
+      padding-top: 20px;
+    }
+
+    .bar-title {
+      font-weight: bold;
+      font-size: 12px;
+      line-height: 14px;
+      color: $gray-7;
+    }
+  }
+
+  .namespace-panel:nth-of-type(1) {
+    margin-left: 0;
+  }
+
+  .new-datalab-sub-title,
+  .check-box-h label {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17px;
+    color: $gray-7;
+  }
+
+  .table-edit-btn {
+    color: $blue-5;
+  }
+
+  .table-delete-btn {
+    color: $red-4;
+  }
+
+  input,
+  textarea,
+  select,
+  select option,
+  .select-form * {
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .select-form * {
+    z-index: 5;
+  }
+
+  textarea {
+    resize: none;
+  }
+}
+
+.admin-modal {
+  .modal-content {
+    border-radius: 8px;
+  }
+
+  .modal-button__delete,
+  .modal-button__normal,
+  .add-gray-button,
+  .add-gray-button:hover,
+  .modal-button__delete:hover,
+  .modal-button__normal:hover {
+    vertical-align: middle;
+    margin-top: 3px;
+    width: 56px;
+    height: 32px;
+  }
+
+  .modal-header {
+    background: $gray-0;
+    padding: 12.5px 20px;
+
+    .modal-title {
+      font-family: "Lato", sans-serif;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 22px;
+      color: $gray-7;
+      margin: 0 auto;
+    }
+
+    .close {
+      position: absolute;
+      top: 12px;
+      right: 20px;
+      padding: 0;
+      background: #dfe2e6;
+      margin: 0;
+      width: 24px;
+      border-radius: 50%;
+    }
+
+    span {
+      text-shadow: none;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      color: #c4c4c4;
+      -webkit-transform: matrix(-0.71, 0.71, -0.7, -0.71, 0, 0);
+      -ms-transform: matrix(-0.71, 0.71, -0.7, -0.71, 0, 0);
+      transform: matrix(-0.71, 0.71, -0.7, -0.71, 0, 0);
+      font-size: 21px;
+      vertical-align: top;
+    }
+  }
+
+  .modal-body {
+    padding: 20px;
+
+    h2 {
+      font-family: "Lato", sans-serif;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 17px;
+      color: $gray-7;
+    }
+
+    .modal__item {
+      font-size: 14px;
+      line-height: 19px;
+      color: $gray-7;
+      padding: 10px 15px;
+    }
+  }
+}

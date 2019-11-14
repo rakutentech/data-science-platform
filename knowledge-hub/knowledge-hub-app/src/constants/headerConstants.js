@@ -1,0 +1,1 @@
+export POPULAR_RECORD_STATUS = 0;

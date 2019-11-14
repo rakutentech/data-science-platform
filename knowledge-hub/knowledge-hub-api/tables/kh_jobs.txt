@@ -1,0 +1,7 @@
+CREATE TABLE kh_jobs (
+    job_name VARCHAR(64), 
+    period_start_time TIMESTAMP(3), 
+    locked_by  VARCHAR(64), 
+    update_time TIMESTAMP(3), 
+    PRIMARY KEY (job_name)
+);

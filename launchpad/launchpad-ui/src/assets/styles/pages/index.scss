@@ -1,0 +1,20 @@
+.main-container {
+  width: 80vw;
+  min-height: 100vh;
+  display: block;
+  background-color: #f4f6f8;
+  position: absolute;
+  right: 0;
+}
+
+.main-context {
+  margin: 30px;
+}
+
+.sub-main-context {
+  padding: 30px;
+  margin-left: 15vw;
+  position: relative;
+  overflow: scroll;
+  height: 80vh;
+}

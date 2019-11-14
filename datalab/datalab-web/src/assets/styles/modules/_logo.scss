@@ -1,0 +1,27 @@
+/* Color logo
+   ========================================================================== */
+
+.logo {
+  -ms-grid-column: 2;
+  grid-column-start: 2;
+  padding-top: 72px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+
+  img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .logo__platform-name {
+    color: $ocean-2;
+  }
+
+  .logo__service-name {
+    font-size: 24px;
+    font-weight: 700;
+    color: $ocean-4;
+    margin-top: -8px;
+  }
+}

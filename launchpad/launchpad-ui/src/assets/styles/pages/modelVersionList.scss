@@ -1,0 +1,169 @@
+.version-list-outer {
+  padding: 20px 30px;
+}
+
+.version-list-nav {
+  font-size: 0.875rem;
+}
+
+.breadcrumb {
+  background-color: #f4f6f8;
+  padding-left: 0;
+  padding-bottom: 0.25rem;
+  margin-bottom: 0;
+}
+
+.version-list-title {
+  font-size: 1.5rem;
+  color: #3B444F;
+}
+
+.version-list-desc {
+  color: #9299A3;
+}
+
+.version-list-info {
+  padding: 6px 12px;
+  background: #FFFFFF;
+  border: 1px solid #DFE2E6;
+  box-sizing: border-box;
+  border-radius: 4px;
+  margin-top: 20px;
+  font-size: 0.875rem;
+}
+
+.version-list-info-text {
+  color: #9299A3;
+  margin-right: 8px;
+}
+
+.version-list-info-btn {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 17px;
+  color: #BF0000;
+  padding: 0 !important;
+  vertical-align: inherit;
+  float: right;
+}
+
+.version-list-info-btn:hover {
+  color: #BF0000 !important;
+}
+
+.info-btn-img {
+  padding-bottom: 5px;
+  padding-right: 4px;
+}
+
+.version-list-detail {
+  margin-top: 20px;
+}
+
+.version-list-detail-table {
+  background-color: #ffffff;
+}
+
+.detail-header {
+  color: #9299A3;
+  font-size: 0.875rem;
+}
+
+.detail-header-date, .detail-header-source, .detail-header-action {
+  vertical-align: middle !important;
+}
+
+.detail-header-metrics {
+  text-align: center;
+}
+
+.detail-header-metrics-column {
+  text-align: center;
+  background: #E6E9ED;
+  border-radius: 2px;
+}
+
+.detail-body-metric {
+  text-align: center;
+}
+
+.detail-body-action {
+  text-align: center;
+}
+
+.version-list-api {
+  margin-top: 20px;
+}
+
+.version-list-api-title {
+  font-size: 1.125rem;
+  color: #3B444F;
+}
+
+.version-list-api-body {
+  margin-top: 10px;
+}
+
+.api-header {
+  padding: 0.5rem 0.75rem;
+}
+
+.api-body {
+  padding: 0.6rem 1.25rem;
+  color: #9299A3;
+}
+
+.api-desc {
+  font-size: 0.875rem;
+}
+
+.api-info {
+  font-size: 0.75rem;
+}
+
+.api-version {
+  float: left;
+}
+
+.api-refresh {
+  float: right;
+}
+
+.version-list-post {
+  margin-top: 20px;
+}
+
+.version-list-post-title {
+  font-size: 1.125rem;
+  color: #3B444F;
+}
+
+.version-list-post-body {
+  margin-top: 10px;
+}
+
+.post-header {
+  padding: 0.5rem 0.75rem;
+}
+
+.post-body {
+  padding: 0.6rem 1.25rem;
+  color: #9299A3;
+}
+
+.post-desc {
+  font-size: 0.875rem;
+}
+
+.post-info {
+  font-size: 0.75rem;
+}
+
+.post-refresh {
+  float: left;
+}
+
+.toast-style {
+  margin-top: 20px;
+  text-align: center;
+}

@@ -1,0 +1,12 @@
+CREATE TABLE kh_authors (
+             author_id varchar(50) NOT NULL,
+             author_name varchar(50),
+             user_privilege varchar(10),
+             is_active tinyint(1) NOT NULL default 1,
+             post_notif tinyint(1) NOT NULL default 1,
+             comment_notif tinyint(1) NOT NULL default 1,
+             create_time timestamp NOT NULL,
+             update_time timestamp NOT NULL,
+             PRIMARY KEY (author_id)
+);
+

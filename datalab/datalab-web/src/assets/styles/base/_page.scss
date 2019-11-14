@@ -1,0 +1,13 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: $gray-0;
+  color: $ocean-4;
+}
+
+*:focus {
+  outline: 0;
+}

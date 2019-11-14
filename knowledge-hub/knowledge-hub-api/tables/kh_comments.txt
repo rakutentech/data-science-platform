@@ -1,0 +1,11 @@
+CREATE TABLE kh_comments (
+             comment_id int(11) NOT NULL AUTO_INCREMENT,
+             notebook_id varchar(22) NOT NULL,
+             user_id varchar(50) NOT NULL,
+             user_name varchar(50) NOT NULL,
+             comment text NOT NULL,
+             create_time timestamp NOT NULL,
+             update_time timestamp NOT NULL,
+             PRIMARY KEY (comment_id)
+);
+

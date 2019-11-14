@@ -1,0 +1,119 @@
+type: function
+items:
+- name: py3-flask-normal2 # same as functionName
+  spec:
+    Name: py3-flask-normal2
+    Description: A function for example
+    ProgramLanguage: python
+    Trigger: http
+    Public: false
+    AccessibleUsers:
+    AccessibleGroups:
+    DefaultFunction: |
+      def handler(request, response):
+          result = "faas"
+          response.set_data("Hello FaaS!, this is a {} request. Result: {}".format(request.method, result))
+
+    DefaultRequirement: |
+      requests==3.0.0
+
+    LoadBalancer: http://localhost
+    DeploymentTemplate: |
+      kind: Deployment
+      apiVersion: extensions/v1beta1
+      metadata: {}
+      spec:
+        replicas: 1
+        template:
+          spec:
+            containers:
+            - name: "{{.UUID}}"
+              image: DOKCER_IMAGE_ADDRESS/faas-python3
+              imagePullPolicy: Always
+
+    ServiceTemplate: |
+      kind: Service
+      apiVersion: v1
+      metadata:
+      spec:
+        type: NodePort
+        ports:
+        - protocol: TCP
+          port: 5000
+          targetPort: 5000
+        selector:
+    IngressTemplate: |
+      kind: Ingress
+      apiVersion: extensions/v1beta1
+      metadata:
+        annotations:
+          kubernetes.io/ingress.class: nginx
+          nginx.ingress.kubernetes.io/rewrite-target: "/"
+      spec:
+        rules:
+        - host: "{{.LoadBalancer}}"
+          http:
+            paths:
+            - path: "{{.IngressPath}}"
+              backend:
+                serviceName: "{{.UUID}}"
+                servicePort: 5000
+
+- name: py3-flask-science2 # same as functionName
+  spec:
+    Name: py3-flask-science2
+    Description: A function for example for testing
+    ProgramLanguage: python
+    Trigger: http
+    Public: false
+    AccessibleUsers:
+    AccessibleGroups:
+    DefaultFunction: |
+      def handler(request, response):
+          result = "science"
+          response.set_data("Hello FaaS!, this is a {} request. Result: {}".format(request.method, result))
+
+    DefaultRequirement: |
+      requests==2.19.1
+
+    LoadBalancer: http://localhost
+    DeploymentTemplate: |
+      kind: Deployment
+      apiVersion: extensions/v1beta1
+      metadata: {}
+      spec:
+        replicas: 1
+        template:
+          spec:
+            containers:
+            - name: "{{.UUID}}"
+              image: DOKCER_IMAGE_ADDRESS/faas-python3
+              imagePullPolicy: Always
+
+    ServiceTemplate: |
+      kind: Service
+      apiVersion: v1
+      metadata:
+      spec:
+        type: NodePort
+        ports:
+        - protocol: TCP
+          port: 5000
+          targetPort: 5000
+        selector:
+    IngressTemplate: |
+      kind: Ingress
+      apiVersion: extensions/v1beta1
+      metadata:
+        annotations:
+          kubernetes.io/ingress.class: nginx
+          nginx.ingress.kubernetes.io/rewrite-target: "/"
+      spec:
+        rules:
+        - host: "{{.LoadBalancer}}"
+          http:
+            paths:
+            - path: "{{.IngressPath}}"
+              backend:
+                serviceName: "{{.UUID}}"
+                servicePort: 5000

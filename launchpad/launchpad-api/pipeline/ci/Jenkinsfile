@@ -1,0 +1,8 @@
+@Library("dscp-jenkins-k8s") _
+
+deployProject (
+    serviceName: "launchpad-api",
+    projectType: "maven",
+    buildCommand: "mvn clean package -DskipTests=true",
+    testCommand: "mvn test"
+)

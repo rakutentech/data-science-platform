@@ -1,0 +1,6 @@
+CREATE TABLE kh_tags (
+             tag_id varchar(100) NOT NULL,
+             tag_description text,
+             create_time timestamp NOT NULL,
+             PRIMARY KEY (tag_id)
+);

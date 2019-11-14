@@ -1,0 +1,7 @@
+CREATE TABLE kh_assoc_notebook_author (
+             notebook_id varchar(22) NOT NULL,
+             record_status char(1) NOT NULL DEFAULT 5,
+             author_id varchar(500) NOT NULL,
+             author_order int(11) DEFAULT 0,
+             PRIMARY KEY (notebook_id, record_status, author_id)
+);

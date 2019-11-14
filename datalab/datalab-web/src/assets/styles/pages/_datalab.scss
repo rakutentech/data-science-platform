@@ -1,0 +1,620 @@
+body *:focus,
+body * {
+  outline: 0;
+}
+
+.datalab-link,
+.datalab-link:hover {
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 17px;
+  font-size: 14px;
+  color: $blue-5;
+}
+
+span.datalab-link {
+  font-weight: normal;
+}
+
+.datalab-delete,
+.datalab-delete:hover {
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 17px;
+  font-size: 14px;
+  color: $rakuten-crimson;
+}
+
+.datalab-title {
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 27px;
+  color: $gray-7;
+}
+
+.datalab-submessage {
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 16px;
+  font-size: 14px;
+  color: $gray-5;
+}
+
+.datalab-radio {
+  background: $white;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 4px;
+  display: inline-block;
+  border: 1px solid $gray-2;
+  margin-right: 20px;
+  margin-bottom: 8px;
+  padding: 0;
+
+  label {
+    font-family: "Lato", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: $gray-5;
+
+    cursor: pointer;
+    width: 100%;
+    padding: 11px;
+    border: 1px solid transparent;
+  }
+}
+
+.datalab-select {
+  .datalab-select__group-heading {
+    font-size: 12px !important;
+    color: $gray-5;
+  }
+
+  .datalab-select__group:last-of-type {
+    border: none;
+  }
+
+  .datalab-select__group {
+    border-bottom: 1px solid $gray-3;
+  }
+
+  span {
+    display: none;
+  }
+}
+
+.datalab-select > div,
+.datalab-input {
+  background: $white;
+  border: 1px solid $gray-2;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+.datalab-select div {
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: $gray-7;
+  z-index: 5;
+}
+
+.datalab-radio.active {
+  background: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      from(rgba(77, 168, 228, 0.06)),
+      to(rgba(77, 168, 228, 0.06))
+    ),
+    #ffffff;
+  background: -webkit-linear-gradient(bottom, rgba(77, 168, 228, 0.06), rgba(77, 168, 228, 0.06)), #ffffff;
+  background: -o-linear-gradient(bottom, rgba(77, 168, 228, 0.06), rgba(77, 168, 228, 0.06)), #ffffff;
+  background: linear-gradient(0deg, rgba(77, 168, 228, 0.06), rgba(77, 168, 228, 0.06)), #ffffff;
+  border: 1px solid $blue-4;
+
+  label {
+    font-family: "Lato", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: $blue-5;
+  }
+}
+
+.datalab-wrapper {
+  background: $white;
+  border: 1px solid $gray-2;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 4px;
+
+  .header-title-wrapper {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  img.icon-image {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.datalab-delimiter {
+  margin: 0 0 0 10px;
+  font-weight: normal;
+}
+
+.datalab-wrapper .bold {
+  font-weight: bold;
+}
+
+.datalab-choose-image .icon-image,
+.datalab-choose-image .icon-image-active {
+  width: 24px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.datalab-radio {
+  .icon-image {
+    display: inline-block;
+  }
+
+  .icon-image-active {
+    display: none;
+  }
+}
+
+.datalab-radio.active {
+  .icon-image {
+    display: none;
+  }
+
+  .icon-image-active {
+    display: inline-block;
+  }
+}
+
+.datalab-table-name {
+  .icon-image {
+    width: 28px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+
+  .header-title-wrapper {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.datalab-body {
+  .title-content {
+    font-family: "Lato", sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    color: $gray-7;
+  }
+
+  h2 {
+    font-family: "Lato", sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17px;
+    color: $gray-7;
+  }
+
+  /*
+  span {
+    font-family: "Lato", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    color: $gray-5;
+  }
+  */
+}
+
+span.header-user-name {
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  color: $gray-5;
+}
+
+span.datalab-submessage table {
+  background: $gray-0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border-collapse: separate;
+
+  tr:first-child td:first-child {
+    border-top-left-radius: 4px;
+    border-top: 1px solid #dfe2e6;
+    border-left: 1px solid #dfe2e6;
+    border-bottom: 1px solid #dfe2e6;
+  }
+
+  tr:first-child td:last-child {
+    border-top-right-radius: 4px;
+    border-top: 1px solid #dfe2e6;
+    border-right: 1px solid #dfe2e6;
+    border-bottom: 1px solid #dfe2e6;
+  }
+
+  tr:last-child td:first-child {
+    border-bottom-left-radius: 4px;
+    border-bottom: 1px solid #dfe2e6;
+    border-left: 1px solid #dfe2e6;
+  }
+
+  tr:last-child td:last-child {
+    border-bottom-right-radius: 4px;
+    border-bottom: 1px solid #dfe2e6;
+    border-right: 1px solid #dfe2e6;
+  }
+
+  td {
+    font-family: "Lato", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    color: $gray-5;
+  }
+}
+
+.deployment-log {
+  background: $gray-0;
+  border: 1px solid $gray-2;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: $gray-5;
+}
+
+.datalab-faas-form-tabs {
+  nav {
+    /*
+    background: $white;
+    border: 1px solid $gray-2;
+    */
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+  }
+
+  .nav-tabs .nav-link {
+    border-top: 1px solid $gray-2;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    margin-bottom: 0;
+    background: $gray-0;
+    border-radius: 0;
+    width: 167px;
+    padding: 12px;
+
+    /* Right Border */
+    -webkit-box-shadow: inset -1px 0px 0px #dfe2e6;
+    box-shadow: inset -1px 0px 0px #dfe2e6;
+    font-family: "Lato", sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    color: $gray-5;
+  }
+
+  .nav-tabs .nav-link:first-of-type {
+    border-left: 1px solid $gray-2;
+    border-top-left-radius: 4px;
+  }
+
+  .nav-tabs .nav-link:last-of-type {
+    border-top-right-radius: 4px;
+  }
+
+  .nav-tabs .nav-link.active,
+  .nav-tabs .nav-item.show .nav-link {
+    background-color: $white;
+    border-color: $gray-2;
+    font-family: "Lato", sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    color: $gray-7;
+  }
+
+  .tab-content {
+    min-width: 500px;
+    background: $white;
+    border-left: 1px solid $gray-2;
+    border-right: 1px solid $gray-2;
+    border-bottom: 1px solid $gray-2;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+
+    .fade.tab-pane {
+      padding: 20px;
+    }
+  }
+}
+
+.faas-form-tabs > nav.nav.nav-tabs {
+  margin: 0 3rem !important;
+}
+
+.faas-form-tabs > .nav-tabs .nav-link {
+  border: none;
+  margin-bottom: 0;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  border-top: 1px solid transparent;
+
+  /* Right Border */
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  text-align: center;
+  color: $gray-5;
+}
+
+.faas-title-link img {
+  vertical-align: middle;
+  margin-right: 10px;
+  width: 28px;
+}
+
+.faas-form-tabs > .nav-tabs .nav-link.active {
+  border-left: 1px solid $gray-2;
+  border-right: 1px solid $gray-2;
+  border-top: 1px solid $gray-2;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  background: $gray-0;
+  border-color: $gray-2;
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  text-align: center;
+  color: $gray-7;
+}
+
+.job-history-table {
+  td {
+    padding: 11px 18px;
+    color: #000000;
+    font-family: "Lato", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+
+    a {
+      font-family: "Lato", sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 16px;
+      color: $blue-5;
+    }
+  }
+
+  th {
+    padding: 11px 18px;
+    font-family: "Lato", sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+    color: #9299a3;
+
+    span {
+      padding: 0;
+      margin: 0 0 0 2px !important;
+      line-height: 0;
+    }
+  }
+}
+
+.history-modal {
+  .modal-content {
+    border-radius: 8px;
+  }
+
+  .modal-header {
+    background: $gray-0;
+    padding: 12.5px 20px;
+
+    .modal-title {
+      font-family: "Lato", sans-serif;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 22px;
+      color: $gray-7;
+      margin: 0 auto;
+    }
+
+    .close {
+      position: absolute;
+      top: 12px;
+      right: 20px;
+      padding: 0;
+      background: #dfe2e6;
+      margin: 0;
+      width: 24px;
+      border-radius: 50%;
+    }
+
+    span {
+      text-shadow: none;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      color: #c4c4c4;
+      -webkit-transform: matrix(-0.71, 0.71, -0.7, -0.71, 0, 0);
+      -ms-transform: matrix(-0.71, 0.71, -0.7, -0.71, 0, 0);
+      transform: matrix(-0.71, 0.71, -0.7, -0.71, 0, 0);
+      font-size: 21px;
+      vertical-align: top;
+    }
+  }
+
+  .modal-body {
+    padding: 20px;
+
+    .nav-tabs .nav-link {
+      border: none;
+      margin-bottom: 0;
+      border-left: 1px solid transparent;
+      border-right: 1px solid transparent;
+      border-top: 1px solid transparent;
+
+      /* Right Border */
+      font-family: "Lato", sans-serif;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 12px;
+      line-height: 14px;
+      text-align: center;
+      color: $gray-5;
+    }
+
+    .nav-tabs .nav-link.active {
+      border-left: 1px solid $gray-2;
+      border-right: 1px solid $gray-2;
+      border-top: 1px solid $gray-2;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      background: $gray-0;
+      border-color: $gray-2;
+      font-family: "Lato", sans-serif;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 12px;
+      line-height: 14px;
+      text-align: center;
+      color: $gray-7;
+    }
+
+    .tab-content {
+      margin: 20px 0 0;
+
+      table {
+        border-radius: 4px;
+
+        th {
+          font-family: "Lato", sans-serif;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 12px;
+          line-height: 14px;
+          font-variant: small-caps;
+          color: $gray-5;
+          border-radius: 0;
+        }
+
+        td {
+          border-radius: 0;
+          font-family: "Lato", sans-serif;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 12px;
+          line-height: 14px;
+          color: $gray-7;
+        }
+
+        td:first-child {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+.dropdown-menu {
+  min-width: auto;
+}
+
+span.faas-optional {
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 9px;
+  color: #9299a3;
+  background: #e6e9ed;
+  border-radius: 8px;
+  vertical-align: text-bottom;
+  padding: 2px 9px 3px;
+  margin: -4px 0 0 10px;
+}
+
+nav.faas-only-history {
+  display: none;
+}
+
+.faas-detail-link {
+  img {
+    width: 14px;
+  }
+}
+
+.css-15k3avv > div > div:hover {
+  background: $gray-0;
+}
+
+.css-15k3avv > div > div {
+  background: $white;
+  color: $gray-5;
+}
+
+.detail-btns-right {
+  position: absolute;
+  right: 5rem;
+}
+
+.images_group_title {
+  font-size: 12px;
+  color: $gray-5;
+  margin: 5px 0;
+}

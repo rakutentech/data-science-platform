@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rakuten.tech.dscp.launchpad.dao.PredictApiMapper">
+    <resultMap id="BaseResultMap" type="com.rakuten.tech.dscp.launchpad.entity.PredictApiEntity">
+        <result column="id" jdbcType="BIGINT" property="id"/>
+        <result column="api_name" jdbcType="VARCHAR" property="apiName"/>
+        <result column="api_version" jdbcType="VARCHAR" property="apiVersion"/>
+        <result column="api_path" jdbcType="VARCHAR" property="apiPath"/>
+        <result column="api_des" jdbcType="VARCHAR" property="apiDes"/>
+        <result column="api_status" jdbcType="VARCHAR" property="apiStatus"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="run_id" jdbcType="VARCHAR" property="runId"/>
+        <result column="model_id" jdbcType="BIGINT" property="modelId"/>
+        <result column="model_path" jdbcType="VARCHAR" property="modelPath"/>
+        <result column="res_name" jdbcType="VARCHAR" property="resName"/>
+        <result column="access_url" jdbcType="VARCHAR" property="accessUrl"/>
+        <result column="created_at" jdbcType="TIMESTAMP" property="createdAt"/>
+        <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt"/>
+        <result column="created_by" jdbcType="VARCHAR" property="createdBy"/>
+        <result column="updated_by" jdbcType="VARCHAR" property="updatedBy"/>
+        <result column="api_status_detail" jdbcType="VARCHAR" property="apiStatusDetail"/>
+    </resultMap>
+    <insert id="insert" parameterType="com.rakuten.tech.dscp.launchpad.entity.PredictApiEntity">
+    insert into lp_predict_api (id, api_name, api_version,
+      api_path, api_des, api_status, username, run_id, model_id,
+      model_path, res_name, access_url, created_at,
+      updated_at, created_by, updated_by, api_status_detail
+      )
+    values (#{id,jdbcType=BIGINT}, #{apiName,jdbcType=VARCHAR}, #{apiVersion,jdbcType=VARCHAR},
+      #{apiPath,jdbcType=VARCHAR}, #{apiDes,jdbcType=VARCHAR}, #{apiStatus,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{runId,jdbcType=VARCHAR},#{modelId,jdbcType=BIGINT},
+      #{modelPath,jdbcType=VARCHAR}, #{resName,jdbcType=VARCHAR}, #{accessUrl,jdbcType=VARCHAR}, #{createdAt,jdbcType=TIMESTAMP},
+      #{updatedAt,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, #{updatedBy,jdbcType=VARCHAR}, #{apiStatusDetail,jdbcType=VARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.rakuten.tech.dscp.launchpad.entity.PredictApiEntity">
+        replace into lp_predict_api
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="apiName != null">
+                api_name,
+            </if>
+            <if test="apiVersion != null">
+                api_version,
+            </if>
+            <if test="apiPath != null">
+                api_path,
+            </if>
+            <if test="apiDes != null">
+                api_des,
+            </if>
+            <if test="apiStatus != null">
+                api_status,
+            </if>
+            <if test="username != null">
+                username,
+            </if>
+            <if test="runId != null">
+                run_id,
+            </if>
+            <if test="modelId != null">
+                model_id,
+            </if>
+            <if test="modelPath != null">
+                model_path,
+            </if>
+            <if test="resName != null">
+                res_name,
+            </if>
+            <if test="accessUrl != null">
+                access_url,
+            </if>
+            <if test="createdAt != null">
+                created_at,
+            </if>
+            <if test="updatedAt != null">
+                updated_at,
+            </if>
+            <if test="createdBy != null">
+                created_by,
+            </if>
+            <if test="updatedBy != null">
+                updated_by,
+            </if>
+            <if test="apiStatusDetail != null">
+                api_status_detail,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="apiName != null">
+                #{apiName,jdbcType=VARCHAR},
+            </if>
+            <if test="apiVersion != null">
+                #{apiVersion,jdbcType=VARCHAR},
+            </if>
+            <if test="apiPath != null">
+                #{apiPath,jdbcType=VARCHAR},
+            </if>
+            <if test="apiDes != null">
+                #{apiDes,jdbcType=VARCHAR},
+            </if>
+            <if test="apiStatus != null">
+                #{apiStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="runId != null">
+                #{runId,jdbcType=VARCHAR},
+            </if>
+            <if test="modelId != null">
+                #{modelId,jdbcType=BIGINT},
+            </if>
+            <if test="modelPath != null">
+                #{modelPath,jdbcType=VARCHAR},
+            </if>
+            <if test="resName != null">
+                #{resName,jdbcType=VARCHAR},
+            </if>
+            <if test="accessUrl != null">
+                #{accessUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="createdAt != null">
+                #{createdAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatedAt != null">
+                #{updatedAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createdBy != null">
+                #{createdBy,jdbcType=VARCHAR},
+            </if>
+            <if test="updatedBy != null">
+                #{updatedBy,jdbcType=VARCHAR},
+            </if>
+            <if test="apiStatusDetail != null">
+                #{apiStatusDetail,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="selectAll" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select id, api_name, api_version,
+        api_path, api_des, api_status, username, run_id,model_id,
+        model_path, res_name, access_url, created_at,
+        updated_at, created_by, updated_by, api_status_detail
+        from lp_predict_api
+        <where>
+            <if test="keyword != null">
+                AND (api_name LIKE concat('%',#{keyword,jdbcType=VARCHAR},'%')
+                OR api_des LIKE concat('%',#{keyword, jdbcType=VARCHAR},'%')
+                OR username LIKE concat('%',#{keyword, jdbcType=VARCHAR},'%'))
+            </if>
+        </where>
+        order by api_name
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, api_name, api_version,
+    api_path, api_des, api_status, username, run_id, model_id,
+    model_path, res_name, access_url, created_at,
+    updated_at, created_by, updated_by, api_status_detail
+    from lp_predict_api
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+    <select id="countByRunId" parameterType="java.lang.String" resultType="java.lang.Integer">
+    select count(id)
+    from lp_predict_api
+    where run_id = #{runId,jdbcType=BIGINT}
+  </select>
+
+    <select id="selectByResName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select id, api_name, api_version,
+    api_path, api_des, api_status, username, run_id, model_id,
+    model_path, res_name, access_url, created_at,
+    updated_at, created_by, updated_by, api_status_detail
+    from lp_predict_api
+    where res_name = #{resName,jdbcType=VARCHAR}
+  </select>
+
+    <select id="selectByRunId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select id, api_name, api_version,
+    api_path, api_des, username, run_id, model_id,
+    model_path, res_name, access_url, created_at,
+    updated_at, created_by, updated_by, api_status_detail
+    from lp_predict_api
+    where run_id = #{runId,jdbcType=VARCHAR}
+  </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from lp_predict_api
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+    <delete id="deleteByResName" parameterType="java.lang.String">
+    delete from lp_predict_api
+    where res_name = #{resName,jdbcType=BIGINT}
+  </delete>
+
+    <select id="existModelId" resultType="boolean" parameterType="java.lang.Long">
+      SELECT EXISTS (
+          SELECT 1
+          FROM lp_predict_api
+          WHERE model_id = #{modelId, jdbcType=BIGINT}
+      )
+  </select>
+
+    <select id="existRunId" resultType="boolean" parameterType="java.lang.String">
+      SELECT EXISTS (
+          SELECT 1
+          FROM lp_predict_api
+          WHERE run_id = #{runId, jdbcType=VARCHAR}
+      )
+  </select>
+
+    <insert id="replace" parameterType="com.rakuten.tech.dscp.launchpad.entity.PredictApiEntity">
+    replace into lp_predict_api (id, api_name, api_version,
+      api_path, api_des, api_status, username, run_id, model_id,
+      model_path, res_name, access_url, created_by, updated_by, api_status_detail
+      )
+    values (#{id,jdbcType=BIGINT}, #{apiName,jdbcType=VARCHAR}, #{apiVersion,jdbcType=VARCHAR},
+      #{apiPath,jdbcType=VARCHAR}, #{apiDes,jdbcType=VARCHAR}, #{apiStatus,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{runId,jdbcType=VARCHAR},#{modelId,jdbcType=BIGINT},
+      #{modelPath,jdbcType=VARCHAR}, #{resName,jdbcType=VARCHAR}, #{accessUrl,jdbcType=VARCHAR}, #{createdBy,jdbcType=VARCHAR}, #{updatedBy,jdbcType=VARCHAR}, #{apiStatusDetail,jdbcType=VARCHAR}
+      )
+  </insert>
+
+</mapper>

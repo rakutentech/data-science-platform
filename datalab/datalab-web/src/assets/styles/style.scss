@@ -1,0 +1,32 @@
+/* Basic CSS
+   ========================================================================== */
+@import "./base/destyle";
+@import "./base/variable";
+@import "./base/layout";
+@import "./base/typography";
+@import "./base/page";
+
+/* CSS for components
+   ========================================================================== */
+@import "./components/input";
+@import "./components/buttons";
+@import "./components/container";
+@import "./components/instancetype";
+@import "./components/modal";
+@import "./components/navbar";
+@import "./components/resourcebar";
+@import "./components/sidebar";
+@import "./components/table";
+@import "./components/toolbar";
+
+/* CSS for modules
+   ========================================================================== */
+@import "./modules/logo";
+
+/* CSS for pages
+   ========================================================================== */
+@import "./pages/datalab";
+@import "./pages/admin";
+@import "./pages/loading";
+@import "./pages/login";
+@import "./pages/welcome";

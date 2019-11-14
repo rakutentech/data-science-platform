@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds"
+	debug="false">
+	<springProperty scope="context" name="app.name"
+		source="spring.application.name" />
+	<springProperty scope="context" name="app.log.path"
+		source="spring.application.log-path" />
+
+	<property name="default_charset" value="UTF-8" />
+	<property name="LOGS" value="../logs" />
+	<property name="log_pattern" value="%d{yyyy-MM-dd HH:mm:ss}[%X{userName}]-[%X{notebookId}]-[%X{reqId}]- [%p][%c][%M][%L]-> %m%n"/>
+	
+	<conversionRule conversionWord="clr"
+		converterClass="org.springframework.boot.logging.logback.ColorConverter" />
+	<appender name="console"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<encoder
+			class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>${log_pattern}</pattern>
+			<charset>${default_charset}</charset>
+		</encoder>
+	</appender>
+
+	<appender name="dailyRollingFileAppender"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${LOGS}/app.log</File>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- daily rollover -->
+			<FileNamePattern>rest-demo.%d{yyyy-MM-dd}.log</FileNamePattern>
+			<!-- keep 30 days' worth of history -->
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<Pattern>${log_pattern}</Pattern>
+		</encoder>
+	</appender>
+	<root level="INFO">
+		<appender-ref ref="dailyRollingFileAppender" />
+		<appender-ref ref="console" />
+	</root>
+</configuration>

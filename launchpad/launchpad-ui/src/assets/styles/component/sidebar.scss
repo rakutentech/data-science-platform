@@ -1,0 +1,103 @@
+.sidebar {
+  height: 100%;
+  width: 20vw;
+  background: linear-gradient(108.67deg, #498830 23.07%, #306919 76.93%);
+  position: fixed !important;
+  z-index: 1;
+  overflow: auto;
+}
+
+.sidebar-logo {
+  width: 150px;
+  height: 100px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 35px;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+.sidebar-logo__name {
+  margin-top: 10px;
+}
+
+.sidebar-logo__service-name {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.sidebar-items {
+  width: 150px;
+  color: #ffffff;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+.sidebar-item {
+  width: 100%;
+  display: block;
+  padding: 8px 0px;
+  text-align: left;
+  border: none;
+  white-space: normal;
+  float: none;
+  outline: 0;
+  color: #ffffff;
+}
+
+.sidebar-text {
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+.sidebar-bottom-block {
+  position: fixed;
+  bottom: 0px;
+  margin: auto;
+  margin-bottom: 30px;
+  width: 10vw;
+}
+
+.sub-sidebar {
+  position: absolute;
+  display: block;
+  bottom: 0;
+  left: 0;
+  top: 72px;
+  width: 15vw;
+  padding: 30px;
+  background: #ffffff;
+  border-right: 1px solid #dee2e6 !important;
+}
+
+.sub-sidebar-header {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 24px;
+  font-size: 16px;
+  color: #3b444f;
+  margin-bottom: 15px;
+}
+
+.sub-sidebar-item {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 17px;
+  font-size: 14px;
+  color: #9299a3;
+  display: block;
+  margin-bottom: 10px;
+}

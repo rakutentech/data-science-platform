@@ -1,0 +1,2 @@
+Deploy service {{ .Values.app.name }}!
+Please visit at: {{ .Values.ingress.hostname }}{{ .Values.ingress.path }}

@@ -1,0 +1,11 @@
+type: storages
+items:
+- name: 999GiB
+  spec:
+    Label: 999GiB
+    Value: 999
+
+- name: 1000GiB 
+  spec:
+    Label: 1000GiB
+    Value: 1000

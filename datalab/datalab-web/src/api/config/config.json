@@ -1,0 +1,10 @@
+{
+    "development": {
+        "datalabUrl": "http://localhost:8080",
+        "adminUrl": "http://localhost:8080/admin"
+    },
+    "production" : {
+        "datalabUrl": "http://localhost:8080",
+        "adminUrl": "http://localhost:8080/admin"
+    }
+}

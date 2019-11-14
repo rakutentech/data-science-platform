@@ -1,0 +1,93 @@
+.react-bs-table {
+  .caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 4px dashed;
+    border-top: 4px solid \9;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+  }
+
+  .dropup,
+  .dropdown {
+    position: relative;
+  }
+
+  .dropup .caret,
+  .navbar-fixed-bottom .dropdown .caret {
+    border-top: 0;
+    border-bottom: 4px dashed;
+    border-bottom: 4px solid \9;
+    content: "";
+  }
+
+  table td {
+    white-space: unset;
+  }
+}
+
+.table thead th,
+.table th,
+.table td {
+  border: none;
+  border-radius: 4px;
+}
+
+.sub-main-context .table thead th,
+.react-bs-table-container .table thead th {
+  padding-top: 8px;
+  padding-bottom: 7px;
+}
+
+.instances-table .react-bs-table {
+  background: #ffffff;
+  border: 1px solid #dfe2e6;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: 0px 2px 4px rgba(223, 226, 230, 0.4);
+  box-shadow: 0px 2px 4px rgba(223, 226, 230, 0.4);
+  border-radius: 4px;
+}
+
+tbody tr {
+  border-top: 1px solid #dfe2e6;
+}
+
+thead th {
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 14px;
+  color: #9299a3;
+  vertical-align: middle;
+}
+
+tbody td {
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 14px;
+  vertical-align: middle !important;
+}
+
+tbody div div:first-child {
+  margin-bottom: 5px;
+}
+
+th.searchable-column div {
+  display: inline-block;
+  width: 70%;
+  margin-left: 15px;
+}
+
+th.searchable-column div input {
+  height: auto;
+  padding: 2px 10px 5px;
+  font-size: 1rem;
+  line-height: 1;
+}

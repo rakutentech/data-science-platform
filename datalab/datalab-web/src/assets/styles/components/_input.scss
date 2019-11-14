@@ -1,0 +1,56 @@
+.form-control::-webkit-input-placeholder {
+  color: $gray-5;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+// Basic input styles
+from input {
+  height: 40px;
+  min-width: 246px;
+  border-radius: $radius-m;
+  border: 1px solid $gray-2;
+  background: $white;
+  outline: none;
+}
+
+form label {
+  color: $gray-7;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+// Checkbox styles
+.form-checkbox {
+  input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: inline-block;
+    position: relative;
+    background: $white;
+    height: 20px;
+    width: 20px;
+    border: 1px solid $gray-2;
+    border-radius: $radius-s;
+    cursor: pointer;
+    margin-right: 8px;
+    outline: none;
+
+    &:checked::before {
+      position: absolute;
+      left: 5px;
+      top: -4px;
+      font-size: 90%;
+      content: "\02143";
+      -webkit-transform: rotate(40deg);
+      -ms-transform: rotate(40deg);
+      transform: rotate(40deg);
+    }
+  }
+
+  label {
+    cursor: pointer;
+  }
+}

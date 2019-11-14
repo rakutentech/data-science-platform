@@ -1,0 +1,51 @@
+
+- name: myfunc
+  tags: 
+    func: http-func
+  trigger: http
+  function_name: py2-flask-normal
+  instance_type: s1.small
+  instance_number: 1
+  ingress_path: /myfunc
+  function_code: |
+    def handler(request, response):
+        result = "faas"
+        response.set_data("Hello FaaS!, this is a {} request. Result: {}".format(request.method, result))
+
+  function_requirement: |
+    requests
+
+- name: myjob1
+  tags: 
+    job: job1
+    group: job 
+  trigger: event
+  function_name: shell-batch-group
+  instance_type: s1.small
+  function_code: |
+    echo "Hello world"
+    echo $1
+    echo $http_proxy
+  function_requirement: |
+     echo "Init"
+
+- name: myjob2
+  tags:
+    job: job2
+    group: job
+  trigger: event
+  function_name: shell-batch-group
+  instance_type: s1.small
+  zip_file_path: ./examples/test.zip
+  zip_entrypoint: # empty of event mode
+
+- name: myjob3
+  tags:
+    job: job3
+    group: job
+  trigger: event
+  function_name: shell-batch-group
+  instance_type: s1.small
+  git_repo: ssh://git@git.jp:7999/faas-src-repo.git
+  git_branch: restful
+  git_entrypoint: # empty of event mode

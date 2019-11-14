@@ -1,0 +1,49 @@
+app:
+  name: launchpad-api
+  namespace: delivery-launchpad
+  component: api
+  profile: dev
+
+container:
+  image: "<Docker Repo>/launchpad-api"
+  tag: "latest"
+  pullPolicy: Always
+  port: 8080
+  resources:
+    requests:
+      cpu: 2
+      memory: 4Gi
+    limits:
+      cpu: 4
+      memory: 8Gi
+
+deploy:
+  replica: 1
+  subfix: ""
+  rollingupdate:
+    maxSurge: 1
+    maxUnavailable: 1
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: <Selector Key>
+            operator: In
+            values:
+            - <Selector Value>
+
+ingress:
+  hostname:
+  - localhost
+  path: /launchpad-api
+  class: delivery-ingress
+
+minio:
+  access_key_id: <ACCESS_KEY>
+  secret_access_key: <SECRET_KEY>
+  bucket_name: mlflow
+  endpoint_url: http://launchpad-minio.delivery-launchpad.svc.cluster.local:9000
+
+mlflow:
+  server_uri: http://launchpad-mlflow.delivery-launchpad.svc.cluster.local:5000

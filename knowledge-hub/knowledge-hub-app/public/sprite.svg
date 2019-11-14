@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" fill="none">
+    <defs>
+        <symbol id="icon-left-arrow" viewBox="0 0 16 16">
+            <title>
+                left-arrow
+            </title>
+            <path fill="currentColor" fill-rule="evenodd" d="M6.41421 8L11.7071 13.2929L10.2929 14.7071L3.58578 8L10.2929 1.29289L11.7071 2.70711L6.41421 8Z" clip-rule="evenodd"/>
+        </symbol>
+        <symbol id="icon-right-arrow" viewBox="0 0 16 16">
+            <title>
+                right-arrow
+            </title>
+            <path fill="currentColor" fill-rule="evenodd" d="M9.58579 8L4.29289 2.70711L5.70711 1.29289L12.4142 8L5.70711 14.7071L4.29289 13.2929L9.58579 8Z"/>
+        </symbol>
+    </defs>
+</svg>

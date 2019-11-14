@@ -1,0 +1,12 @@
+CREATE TABLE kh_notebook (
+             notebook_id varchar(22) NOT NULL,
+             record_status char(1) NOT NULL DEFAULT 5,
+             notebook_title varchar(512) NOT NULL,
+             notebook_subtitle text,
+             path varchar(512) NOT NULL,
+             keywords text,
+             create_time timestamp NOT NULL,
+             update_time timestamp NOT NULL,
+             INDEX(notebook_title),
+             PRIMARY KEY (notebook_id, record_status)
+);

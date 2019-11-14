@@ -1,0 +1,28 @@
+{{- $ingressPath := .Values.ingress.path -}}
+{{- $appName := .Values.app.name -}}
+{{- $deploySubfix := .Values.deploy.subfix -}}
+{{- $containerPort := .Values.container.port -}}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ .Values.app.name }}{{ .Values.deploy.subfix }}
+  namespace: {{ .Values.app.namespace }}
+  annotations:
+    kubernetes.io/ingress.class: "{{ .Values.ingress.class }}"
+    kubernetes.io/tls-acme: "true"
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/enable-rewrite-log: "true"
+    nginx.ingress.kubernetes.io/enable-access-log: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/proxy-body-size: 50m
+spec:
+  rules:
+{{- range $hostname := .Values.ingress.hostname }}
+  - host: {{ $hostname }}
+    http:
+      paths:
+      - path: {{ $ingressPath }}
+        backend:
+          serviceName: {{ $appName }}{{ $deploySubfix }}
+          servicePort: {{ $containerPort }}
+{{ end }}

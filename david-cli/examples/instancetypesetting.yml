@@ -1,0 +1,30 @@
+type: instancetypes
+items: 
+- name: s1.extra-large # same as Name
+  spec:
+    Name: s1.extra-large
+    Group: Standard
+    Description: s1.extra large spec
+    CPU: 4
+    GPU: 4
+    Memory: 64
+    MemoryScale: GiB
+    Tags:
+          tag1: tags
+    Public: yes
+    AccessibleUsers:
+          - tester
+    AccessibleGroups:
+          - dsd
+          - cdna
+
+- name: s1.large # same as Name
+  spec:
+    Name: s1.large
+    Group: Standard
+    Description: s1.large spec
+    CPU: 4
+    GPU: 0
+    Memory: 64
+    MemoryScale: GiB
+    Public: false
