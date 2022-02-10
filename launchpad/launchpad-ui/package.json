@@ -46,7 +46,7 @@
     "html-webpack-plugin": "^3.2.0",
     "identity-obj-proxy": "^3.0.0",
     "jest-transform-stub": "^1.0.0",
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "nodemon": "^1.18.9",
     "path": "^0.12.7",
     "postcss-cssnext": "^3.1.0",
