@@ -36,7 +36,7 @@
         <plugin-jacoco.version>0.8.0</plugin-jacoco.version>
         <plugin-dockerfile.version>1.4.0</plugin-dockerfile.version>
         <mockito.version>2.23.4</mockito.version>
-        <fastjson.version>1.2.47</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
     </properties>
 
     <dependencyManagement>
